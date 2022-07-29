@@ -14,14 +14,12 @@ var ouvValueSelector;
 var darValueSelector;
 var offValueSelector;
 var flaValueSelector;
-var datata;
 
 socket.on("res_settings", (data) => {
   console.log(data);
-  datata = data;
-  isoValueSelector = data[0].children.capturesettings.iso.value;
-  expValueSelector = data[0].children.capturesettings.shutterspeed.value;
-  ouvValueSelector = data[0].children.capturesettings["f-number"].value;
+  isoValueSelector = data.main.children.capturesettings.iso.value;
+  expValueSelector = data.main.children.capturesettings.shutterspeed.value;
+  ouvValueSelector = data.main.children.capturesettings["f-number"].value;
 });
 
 window.onload = () => {
