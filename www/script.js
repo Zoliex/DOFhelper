@@ -29,7 +29,7 @@ socket.on("res_settings", (data) => {
     data.main.children.capturesettings.children.shutterspeed.value;
   ouvValueSelector.innerHTML =
     data.main.children.capturesettings.children["f-number"].value;
-  
+
   isoValueID = data.main.children.imgsettings.children.iso.choices.indexOf(
     data.main.children.imgsettings.children.iso.value
   );
@@ -101,10 +101,6 @@ function stopTask() {
 
 function settingButton(name) {
   if (name == "ISO+") {
-    var tempValue = settings.main.children.imgsettings.children.iso.choices.indexOf(
-      isoValueSelector.innerHTML
-    );
-    isoValueSelector.innerHTML = 
   } else if (name == "ISO-") {
   } else if (name == "EXPO+") {
   } else if (name == "EXPO-") {
