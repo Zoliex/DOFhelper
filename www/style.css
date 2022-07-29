@@ -1,0 +1,133 @@
+body {
+  background: #000;
+  color: #fff;
+  font-family: Arial;
+  overflow: none;
+}
+.button-primary {
+  background: #db1a1a;
+  color: #fff;
+  height: 64px;
+  width: 202px;
+  border-radius: 12px;
+  border: none;
+  font-size: 50px;
+}
+
+.button-primary:active {
+  opacity: 0.7;
+}
+
+.button-primary:disabled {
+  opacity: 0.2;
+}
+
+.page {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.page .column {
+  position: absolute;
+  width: 228px;
+  height: 340px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: space-between;
+}
+
+.page .column .values {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.page .column .values .title {
+  font-size: 35px;
+  margin-bottom: 2px;
+}
+
+.page .column .values .value {
+  font-size: 79px;
+  font-weight: 600;
+  margin-block: auto;
+}
+
+.task-page {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.task-page .eta {
+  text-align: center;
+  margin-top: -110px;
+}
+
+.task-page .eta #eta {
+  font-size: 60px;
+  margin-bottom: -120px;
+}
+
+.task-page .eta #type {
+  font-size: 120px;
+  text-transform: uppercase;
+  font-weight: 900;
+  margin-bottom: -60px;
+}
+
+.task-page .eta #quantity {
+  font-size: 60px;
+}
+
+.task-page .cancel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iso,
+.dark {
+  left: 35px;
+  top: 31px;
+}
+
+.exp,
+.offset {
+  left: 286px;
+  top: 31px;
+}
+
+.ouv,
+.flat {
+  left: 537px;
+  top: 31px;
+}
+
+.np {
+  font-size: 30px;
+  line-height: 36px;
+  position: absolute;
+  z-index: 999;
+}
+
+button#previous {
+  left: 48px;
+  top: 390px;
+}
+
+button#next {
+  left: 551px;
+  top: 390px;
+}
+
+.quantity-page {
+  display: none;
+}
+
+.task-page {
+  display: none;
+}

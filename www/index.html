@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOFhelper</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <button class="button-primary np" id="next" onclick="quantityPage()">
+      Suivant
+    </button>
+    <button class="button-primary np" id="previous" disabled>Retour</button>
+    <div class="settings-page page">
+      <div class="column iso">
+        <div class="button">
+          <button class="button-primary plus" onclick="settingButton('ISO+')">
+            +
+          </button>
+        </div>
+        <div class="values">
+          <p class="title">ISO</p>
+          <p id="iso-value" class="value">1250</p>
+        </div>
+        <div class="button">
+          <button class="button-primary minus" onclick="settingButton('ISO-')">
+            -
+          </button>
+        </div>
+      </div>
+      <div class="column exp">
+        <div class="button">
+          <button class="button-primary plus" onclick="settingButton('EXPO+')">
+            +
+          </button>
+        </div>
+        <div class="values">
+          <p class="title">EXPOSITION</p>
+          <p id="exp-value" class="value">30"</p>
+        </div>
+        <div class="button">
+          <button class="button-primary minus" onclick="settingButton('EXPO-')">
+            -
+          </button>
+        </div>
+      </div>
+      <div class="column ouv">
+        <div class="button">
+          <button class="button-primary plus" onclick="settingButton('OUV+')">
+            +
+          </button>
+        </div>
+        <div class="values">
+          <p class="title">OUVERTURE</p>
+          <p id="ouv-value" class="value">F/2.3</p>
+        </div>
+        <div class="button">
+          <button class="button-primary minus" onclick="settingButton('OUV-')">
+            -
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="quantity-page page">
+      <div class="column dark">
+        <div class="button">
+          <button class="button-primary plus" onclick="quantityButton('DAR+')">
+            +
+          </button>
+        </div>
+        <div class="values">
+          <p class="title">Darks</p>
+          <p id="dar-value" class="value">30</p>
+        </div>
+        <div class="button">
+          <button class="button-primary minus" onclick="quantityButton('DAR-')">
+            -
+          </button>
+        </div>
+      </div>
+      <div class="column offset">
+        <div class="button">
+          <button class="button-primary plus" onclick="quantityButton('OFF+')">
+            +
+          </button>
+        </div>
+        <div class="values">
+          <p class="title">Offsets</p>
+          <p id="off-value" class="value">30</p>
+        </div>
+        <div class="button">
+          <button class="button-primary minus" onclick="quantityButton('OFF-')">
+            -
+          </button>
+        </div>
+      </div>
+      <div class="column flat">
+        <div class="button">
+          <button class="button-primary plus" onclick="quantityButton('FLA+')">
+            +
+          </button>
+        </div>
+        <div class="values">
+          <p class="title">Flats</p>
+          <p id="fla-value" class="value">30</p>
+        </div>
+        <div class="button">
+          <button class="button-primary minus" onclick="quantityButton('FLA-')">
+            -
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="task-page page">
+      <div class="eta">
+        <p id="eta">ETA: 6:30</p>
+        <p id="type">Offsets</p>
+        <p id="quantity">1/30</p>
+      </div>
+      <div class="cancel">
+        <button id="cancel-job" class="button-primary np" onclick="stopTask()">
+          Stop
+        </button>
+      </div>
+    </div>
+  </body>
+</html>
