@@ -4,7 +4,8 @@ const http = require("http");
 const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server);
-const { exec } = require("child_process");
+var gphoto2 = require("gphoto2");
+var GPhoto = new gphoto2.GPhoto2();
 
 app.use("/", express.static("www"));
 
@@ -28,49 +29,6 @@ io.on("connection", (socket) => {
   socket.on("settings", async () => {
     var settingsParsed = [];
 
-    var aperture = await command("gphoto2 --get-config f-number");
-    var iso = await command("gphoto2 --get-config iso");
-    var aperture = await command("gphoto2 --get-config shutterspeed");
-
-    aperture.replace("Label: F-Number\nReadonly: 1\nType: RADIO", "");
-    aperture.replace("\nEND", "");
-    aperture.replace("Current: ", "");
-    aperture.replace("Choice: ", "");
-    aperture.split("\n");
-
-    iso.replace("Label: ISO Speed\nReadonly: 0\nType: RADIO", "");
-    iso.replace("\nEND", "");
-    iso.replace("Current: ", "");
-    iso.replace("Choice: ", "");
-    iso.split("\n");
-
-    shutterspeed.replace("Label: Shutter Speed\nReadonly: 0\nType: RADIO", "");
-    shutterspeed.replace("\nEND", "");
-    shutterspeed.replace("Current: ", "");
-    shutterspeed.replace("Choice: ", "");
-    shutterspeed.split("\n");
-
-    settingsParsed.aperture.current = aperture[0].split(" ")[1];
-    delete aperture[0];
-    settingsParsed.iso.current = iso[0].split(" ")[1];
-    delete iso[0];
-    settingsParsed.shutterspeed.current = shutterspeed[0].split(" ")[1];
-    delete shutterspeed[0];
-
-    for (key of aperture) {
-      var tempKey = key.split(" ");
-      settingsParsed.aperture.choices.push(tempKey[1]);
-    }
-
-    for (key of iso) {
-      var tempKey = key.split(" ");
-      settingsParsed.iso.choices.push(tempKey[1]);
-    }
-
-    for (key of shutterspeed) {
-      var tempKey = key.split(" ");
-      settingsParsed.shutterspeed.choices.push(tempKey[1]);
-    }
     socket.emit("res_settings", settingsParsed);
   });
 });
