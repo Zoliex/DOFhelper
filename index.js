@@ -28,9 +28,9 @@ io.on("connection", (socket) => {
   socket.on("settings", async () => {
     var settingsParsed = [];
 
-    var aperture = await command("sudo gphoto2 --get-config f-number");
-    var iso = await command("sudo gphoto2 --get-config iso");
-    var aperture = await command("sudo gphoto2 --get-config shutterspeed");
+    var aperture = await command("gphoto2 --get-config f-number");
+    var iso = await command("gphoto2 --get-config iso");
+    var aperture = await command("gphoto2 --get-config shutterspeed");
 
     aperture.replace("Label: F-Number\nReadonly: 1\nType: RADIO", "");
     aperture.replace("\nEND", "");
