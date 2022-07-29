@@ -15,6 +15,8 @@ var darValueSelector;
 var offValueSelector;
 var flaValueSelector;
 
+socket.on("res_settings", (data) => console.log(data));
+
 window.onload = () => {
   socket.emit("settings");
   previous = document.getElementById("previous");
