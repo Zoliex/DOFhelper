@@ -36,20 +36,21 @@ socket.on("res_settings", (data) => {
     )
     .find((i) => i >= 0);
 
-  expValueID = data.main.children.capturesettings.children.shutterspeed
-    .map((c) =>
-      c.choices.indexOf(
-        data.main.children.capturesettings.children.shutterspeed.value
-      )
-    )
-    .find((i) => i >= 0);
-  ouvValueID = data.main.children.capturesettings.children["f-number"]
-    .map((c) =>
-      c.choices.indexOf(
-        data.main.children.capturesettings.children["f-number"].value
-      )
-    )
-    .find((i) => i >= 0);
+  for (
+    i = 0;
+    i < data.main.children.imgsettings.children.iso.choices.length;
+
+  ) {
+    console.log(i);
+    if (
+      (data.main.children.imgsettings.children.iso.choices[i] =
+        data.main.children.imgsettings.children.iso.value)
+    ) {
+      isoValueID = i;
+      break;
+    }
+    i++;
+  }
 });
 
 window.onload = () => {
