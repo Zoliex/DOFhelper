@@ -30,12 +30,6 @@ socket.on("res_settings", (data) => {
   ouvValueSelector.innerHTML =
     data.main.children.capturesettings.children["f-number"].value;
 
-  isoValueID = data.main.children.imgsettings.children.iso
-    .map((c) =>
-      c.choices.indexOf(data.main.children.imgsettings.children.iso.value)
-    )
-    .find((i) => i >= 0);
-
   for (
     i = 0;
     i < data.main.children.imgsettings.children.iso.choices.length;
