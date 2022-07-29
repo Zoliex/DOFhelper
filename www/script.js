@@ -16,9 +16,9 @@ var offValueSelector;
 var flaValueSelector;
 
 socket.on("res_settings", (data) => {
-  isoValueSelector = data.children.capturesettings.iso.value;
-  expValueSelector = data.children.capturesettings.shutterspeed.value;
-  ouvValueSelector = data.children.capturesettings["f-number"].value;
+  isoValueSelector = data[0].children.capturesettings.iso.value;
+  expValueSelector = data[0].children.capturesettings.shutterspeed.value;
+  ouvValueSelector = data[0].children.capturesettings["f-number"].value;
 });
 
 window.onload = () => {
