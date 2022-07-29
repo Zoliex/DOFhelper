@@ -15,14 +15,30 @@ var darValueSelector;
 var offValueSelector;
 var flaValueSelector;
 
+var settings = {};
+var isoValueID = 0;
+var expValueID = 0;
+var ouvValueID = 0;
+
 socket.on("res_settings", (data) => {
   console.log(data);
+  settings = data;
   isoValueSelector.innerHTML =
     data.main.children.imgsettings.children.iso.value;
   expValueSelector.innerHTML =
     data.main.children.capturesettings.children.shutterspeed.value;
   ouvValueSelector.innerHTML =
     data.main.children.capturesettings.children["f-number"].value;
+  
+  isoValueID = data.main.children.imgsettings.children.iso.choices.indexOf(
+    data.main.children.imgsettings.children.iso.value
+  );
+  expValueID = data.main.children.capturesettings.children.shutterspeed.indexOf(
+    data.main.children.capturesettings.children.shutterspeed.value
+  );
+  ouvValueID = data.main.children.capturesettings.children["f-number"].indexOf(
+    data.main.children.capturesettings.children["f-number"].value
+  );
 });
 
 window.onload = () => {
@@ -85,6 +101,10 @@ function stopTask() {
 
 function settingButton(name) {
   if (name == "ISO+") {
+    var tempValue = settings.main.children.imgsettings.children.iso.choices.indexOf(
+      isoValueSelector.innerHTML
+    );
+    isoValueSelector.innerHTML = 
   } else if (name == "ISO-") {
   } else if (name == "EXPO+") {
   } else if (name == "EXPO-") {
