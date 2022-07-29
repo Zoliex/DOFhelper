@@ -37,7 +37,7 @@ server.listen(6500, () => {
   console.log("listening on localhost:6500");
 });
 
-var data;
+var data = {};
 data.main = {
   type: "section",
   label: "Camera and Driver Configuration",
