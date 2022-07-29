@@ -30,15 +30,26 @@ socket.on("res_settings", (data) => {
   ouvValueSelector.innerHTML =
     data.main.children.capturesettings.children["f-number"].value;
 
-  isoValueID = data.main.children.imgsettings.children.iso.choices.indexOf(
-    data.main.children.imgsettings.children.iso.value
-  );
-  expValueID = data.main.children.capturesettings.children.shutterspeed.indexOf(
-    data.main.children.capturesettings.children.shutterspeed.value
-  );
-  ouvValueID = data.main.children.capturesettings.children["f-number"].indexOf(
-    data.main.children.capturesettings.children["f-number"].value
-  );
+  isoValueID = data.main.children.imgsettings.children.iso
+    .map((c) =>
+      c.choices.indexOf(data.main.children.imgsettings.children.iso.value)
+    )
+    .find((i) => i >= 0);
+
+  expValueID = data.main.children.capturesettings.children.shutterspeed
+    .map((c) =>
+      c.choices.indexOf(
+        data.main.children.capturesettings.children.shutterspeed.value
+      )
+    )
+    .find((i) => i >= 0);
+  ouvValueID = data.main.children.capturesettings.children["f-number"]
+    .map((c) =>
+      c.choices.indexOf(
+        data.main.children.capturesettings.children["f-number"].value
+      )
+    )
+    .find((i) => i >= 0);
 });
 
 window.onload = () => {
