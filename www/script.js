@@ -15,10 +15,13 @@ var darValueSelector;
 var offValueSelector;
 var flaValueSelector;
 
-socket.on("res_settings", (data) => console.log(data));
+socket.on("res_settings", (data) => {
+  isoValueSelector = data.children.capturesettings.iso.value;
+  expValueSelector = data.children.capturesettings.shutterspeed.value;
+  ouvValueSelector = data.children.capturesettings["f-number"].value;
+});
 
 window.onload = () => {
-  socket.emit("settings");
   previous = document.getElementById("previous");
   next = document.getElementById("next");
 
@@ -33,6 +36,7 @@ window.onload = () => {
   settingsPageSelector = document.querySelector(".settings-page");
   quantityPageSelector = document.querySelector(".quantity-page");
   taskPageSelector = document.querySelector(".task-page");
+  socket.emit("settings");
 };
 
 function settingsPage() {
