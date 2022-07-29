@@ -7,29 +7,27 @@ const io = new Server(server);
 var gphoto2 = require("gphoto2");
 var GPhoto = new gphoto2.GPhoto2();
 
+var camera;
+
 app.use("/", express.static("www"));
 
-async function command(command) {
-  exec(command, (error, stdout, stderr) => {
-    if (error) {
-      console.log(`error: ${error.message}`);
-      return;
-    }
-    if (stderr) {
-      console.log(`stderr: ${stderr}`);
-      return;
-    }
-    //console.log(`stdout: ${stdout}`);
-    return stdout;
-  });
-}
+GPhoto.list(function (list) {
+  if (list.length === 0) return;
+  camera = list[0];
+  console.log("Found", camera.model);
+});
+
+GPhoto.setLogLevel(1);
+GPhoto.on("log", function (level, domain, message) {
+  console.log(domain, message);
+});
 
 io.on("connection", (socket) => {
   console.log("a user connected !");
   socket.on("settings", async () => {
-    var settingsParsed = [];
-
-    socket.emit("res_settings", settingsParsed);
+    await camera.getConfig(function (er, settings) {
+      socket.emit("res_settings", settings);
+    });
   });
 });
 
